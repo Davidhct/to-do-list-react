@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.item-div {
+  display: flex;
+  justify-content: flex-start;
+  border: solid blue;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.checkbox {
+  width: 2rem;
+}
+
+.item {
+  font-size: 20px;
+  margin: 0.5rem;
+}
