@@ -8,11 +8,11 @@
   display: flex;
   justify-content: center;
   margin: 30px;
+  background: white;
 
-  border: solid red;
+  /* border: solid red; */
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  padding-left: 7px;
 }
 .input {
   font-size: 20px;
@@ -21,11 +21,14 @@
   border: none;
   width: 35vw;
   height: 40px;
+  padding-left: 7px;
 }
 .input-button {
+  border-top-right-radius: 13px;
   width: 3vw;
   outline: none;
   border: none;
-  background: none;
+  background: rgb(97, 177, 243);
+  font-size: 25px;
   cursor: pointer;
 }

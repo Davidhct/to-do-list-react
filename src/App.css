@@ -1,3 +1,20 @@
 .App {
   text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+.input-wrapper {
+  background: rgb(241, 238, 238);
+  border: solid rgb(241, 238, 238);
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin: 20px;
+}
+.list-wrapper {
+  display: block;
+  height: 45vh;
+  overflow: auto;
 }

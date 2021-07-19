@@ -11,14 +11,18 @@ class App extends Component {
       todos: [],
     };
   }
-
   onChangeInput = (event) => {
     this.setState({ userInput: event.target.value });
   };
   onClickInput = () => {
     let todosArr = this.state.todos;
-    todosArr.push({ check: false, value: this.state.userInput });
-    this.setState({ todos: todosArr });
+    const inputVal = this.state.userInput.trim();
+    if (inputVal === "") alert("You did not write anything!");
+    else {
+      todosArr.push({ check: false, value: this.state.userInput });
+      this.setState({ todos: todosArr });
+    }
+    this.setState({ userInput: "" });
   };
 
   onCheckHandle = (event) => {
@@ -32,8 +36,11 @@ class App extends Component {
       }
       return item;
     });
+
     this.setState({ todos: updateState });
   };
+
+  // onHidden = () => {};
 
   render() {
     const items = this.state.todos.map((item, index) => (
@@ -44,14 +51,21 @@ class App extends Component {
         onCheckHandle={this.onCheckHandle}
       />
     ));
-    console.log(this.state.todos);
+
     return (
       <div className="App">
-        <TodoInput
-          onChangeInput={this.onChangeInput}
-          onClickInput={this.onClickInput}
-        />
-        {items}
+        <h1>TodoInput</h1>
+        <div className="input-wrapper">
+          <TodoInput
+            userIn={this.state.userInput}
+            onChangeInput={this.onChangeInput}
+            onClickInput={this.onClickInput}
+          />
+        </div>
+        <div>
+          <h1>TodoList</h1>
+        </div>
+        <div className="list-wrapper">{items}</div>
       </div>
     );
   }
