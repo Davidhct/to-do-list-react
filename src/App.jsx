@@ -40,8 +40,6 @@ class App extends Component {
     this.setState({ todos: updateState });
   };
 
-  // onHidden = () => {};
-
   render() {
     const items = this.state.todos.map((item, index) => (
       <Item
