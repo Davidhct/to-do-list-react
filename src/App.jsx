@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { TodoInput } from "./components/TodoInput/TodoInput.component";
 import { Item } from "./components/Item/Item.component";
 import "./App.css";
-/////////////////////////
+
 class App extends Component {
   constructor() {
     super();
