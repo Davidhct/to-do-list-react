@@ -60,9 +60,7 @@ class App extends Component {
             onClickInput={this.onClickInput}
           />
         </div>
-        <div>
-          <h1>TodoList</h1>
-        </div>
+        <div>{this.state.todos.length > 0 ? <h1>TodoList</h1> : null}</div>
         <div className="list-wrapper">{items}</div>
       </div>
     );
