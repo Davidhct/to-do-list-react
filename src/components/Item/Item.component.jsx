@@ -1,5 +1,7 @@
 import React from "react";
 import "./Item.styles.css";
+import editIcon from "./icons/edit_icon.png";
+import deleteIcon from "./icons/delete_icon.png";
 
 export const Item = (props) => {
   return (
@@ -11,7 +13,28 @@ export const Item = (props) => {
         checked={props.todo.check}
         onChange={props.onCheckHandle}
       />
-      <p className="item">{props.todo.value}</p>
+      <input
+        type="text"
+        className="item"
+        id={`input-item-${props.id}`}
+        value={props.todo.value}
+        onChange={props.onChangeItem}
+        disabled={props.todo.edit}
+      />
+      <img
+        src={editIcon}
+        alt="edit button"
+        className="edit"
+        id={`edit-item-${props.id}`}
+        onClick={props.onClickEdit}
+      />
+      <img
+        src={deleteIcon}
+        alt="delete button"
+        className="delete"
+        id={`delete-item-${props.id}`}
+        onClick={props.onClickDelete}
+      />
     </div>
   );
 };
