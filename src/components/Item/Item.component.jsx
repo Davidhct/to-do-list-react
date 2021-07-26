@@ -15,8 +15,9 @@ export const Item = (props) => {
       />
       <input
         type="text"
-        className="item"
-        id={`input-item-${props.id}`}
+        className={props.todo.check ? "noItem" : "item"}
+        // id={`input-item-${props.id}`}
+        id={props.id}
         value={props.todo.value}
         onChange={props.onChangeItem}
         disabled={props.todo.edit}
@@ -25,14 +26,16 @@ export const Item = (props) => {
         src={editIcon}
         alt="edit button"
         className="edit"
-        id={`edit-item-${props.id}`}
+        // id={`edit-item-${props.id}`}
+        id={props.id}
         onClick={props.onClickEdit}
       />
       <img
         src={deleteIcon}
         alt="delete button"
         className="delete"
-        id={`delete-item-${props.id}`}
+        // id={`delete-item-${props.id}`}
+        id={props.id}
         onClick={props.onClickDelete}
       />
     </div>

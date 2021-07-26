@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clear-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.clear-btn > button {
+  cursor: pointer;
+  width: 42.5%;
+  padding: 0.5rem;
+  background: #e92c2c;
+  color: aliceblue;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}

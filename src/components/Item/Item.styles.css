@@ -20,8 +20,14 @@
   cursor: pointer;
   width: 2rem;
 }
+.noItem {
+  font-style: italic;
+  color: #a19c9c;
+  text-decoration: 2px line-through red;
+}
 
-.item {
+.item,
+.noItem {
   /* border: 2px solid black; */
   display: flex;
   font-size: 20px;

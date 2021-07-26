@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { TodoInput } from "./components/TodoInput/TodoInput.component";
 import { Item } from "./components/Item/Item.component";
+import { ClearList } from "./components/ClearList/ClearList.component";
 import edittingIcon from "./components/Item/icons/editting_icon.png";
 import editIcon from "./components/Item/icons/edit_icon.png";
 import "./App.css";
@@ -28,64 +29,78 @@ class App extends Component {
   };
 
   onCheckHandle = (event) => {
-    const prevState = this.state.todos;
-    const updateState = prevState.map((item, index) => {
-      if (index === Number(event.target.id)) {
-        return {
-          ...item,
-          check: !item.check,
-        };
-      }
-      return item;
-    });
+    this.setState((prevState) => {
+      const updateState = prevState.todos.map((item, index) => {
+        if (`${index}` === event.target.id) {
+          return {
+            ...item,
+            check: !item.check,
+          };
+        }
+        return item;
+      });
 
-    this.setState({ todos: updateState });
+      return { todos: updateState };
+    });
   };
 
   onChangeEdit = (event) => {
-    const prevState = this.state.todos;
-    const updateState = prevState.map((item, index) => {
-      if (`input-item-${index}` === event.target.id) {
-        if (item.edit === false) {
-          return {
-            ...item,
-            value: event.target.value,
-          };
+    this.setState((prevState) => {
+      const updateState = prevState.todos.map((item, index) => {
+        if (`${index}` === event.target.id) {
+          if (item.edit === false) {
+            return {
+              ...item,
+              value: event.target.value,
+            };
+          }
         }
-      }
-      return item;
+        return item;
+      });
+      return { todos: updateState };
     });
-    this.setState({ todos: updateState });
   };
 
   onClickEdit = (event) => {
-    const prevState = this.state.todos;
-    const updateState = prevState.map((item, index) => {
-      if (`edit-item-${index}` === event.target.id) {
-        if (item.edit) event.target.src = edittingIcon;
-        else event.target.src = editIcon;
-
-        return {
-          ...item,
-          edit: !item.edit,
-        };
-      }
-      return item;
+    this.setState((prevState) => {
+      const updateState = prevState.todos.map((item, index) => {
+        if (`${index}` === event.target.id) {
+          event.target.src = item.edit === true ? edittingIcon : editIcon;
+          return {
+            ...item,
+            edit: !item.edit,
+          };
+        }
+        return item;
+      });
+      return { todos: updateState };
     });
-    this.setState({ todos: updateState });
   };
 
-  // onClickDelete = (event) => {
-  //   const prevState = this.state.todos;
-  //   const updateState = prevState.map((item, index) => {
-  //     if (`delete-item-${index}` === event.target.id) {
-  //       prevState.splice(index, 1);
-  //       return prevState;
-  //     }
-  //     return item;
-  //   });
-  //   this.setState({ todos: updateState });
-  // };
+  onClickDelete = (index) => {
+    this.setState((prevState) => {
+      let updateState = [...prevState.todos];
+      updateState.splice(index, 1);
+
+      return { todos: updateState };
+    });
+  };
+
+  onClickClearAll = () => {
+    this.setState(() => {
+      const updateState = [];
+      return { todos: updateState };
+    });
+  };
+  onClickClearChecked = () => {
+    this.setState((prevState) => {
+      const update = prevState.todos;
+      prevState.todos.forEach((item, index) => {
+        if (item.check) update.splice(index, 1);
+      });
+      return { todos: update };
+    });
+  };
 
   render() {
     const items = this.state.todos.map((item, index) => (
@@ -96,7 +111,7 @@ class App extends Component {
         onCheckHandle={this.onCheckHandle}
         onChangeItem={this.onChangeEdit}
         onClickEdit={this.onClickEdit}
-        onClickDelete={this.onClickDelete}
+        onClickDelete={() => this.onClickDelete(index)}
       />
     ));
 
@@ -112,6 +127,14 @@ class App extends Component {
         </div>
         <div>{this.state.todos.length > 0 ? <h1>TodoList</h1> : null}</div>
         <div className="list-wrapper">{items}</div>
+        <div>
+          {this.state.todos.length > 0 && (
+            <ClearList
+              onClickClearAll={this.onClickClearAll}
+              onClickClearChecked={this.onClickClearChecked}
+            />
+          )}
+        </div>
       </div>
     );
   }
