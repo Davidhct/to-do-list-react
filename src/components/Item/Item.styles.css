@@ -42,12 +42,9 @@
   border: none;
 }
 
-.delete {
-  cursor: pointer;
-  margin: 0 2% 0 2%;
-  /* margin: 0.2rem; */
-}
+.delete,
 .edit {
   cursor: pointer;
   margin: 0 2% 0 2%;
+  /* margin: 0.2rem; */
 }
