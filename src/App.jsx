@@ -4,6 +4,8 @@ import { Item } from "./components/Item/Item.component";
 import { ClearList } from "./components/ClearList/ClearList.component";
 import edittingIcon from "./components/Item/icons/editting_icon.png";
 import editIcon from "./components/Item/icons/edit_icon.png";
+import swal from "sweetalert";
+
 import "./App.css";
 
 class App extends Component {
@@ -17,10 +19,11 @@ class App extends Component {
   onChangeInput = (event) => {
     this.setState({ userInput: event.target.value });
   };
+
   onClickInput = () => {
     const todosArr = this.state.todos;
     const inputVal = this.state.userInput.trim();
-    if (inputVal === "") alert("You did not write anything!");
+    if (inputVal === "") swal("You did not write anything!");
     else {
       todosArr.push({ check: false, value: this.state.userInput, edit: true });
       this.setState({ todos: todosArr });
@@ -42,6 +45,10 @@ class App extends Component {
 
       return { todos: updateState };
     });
+  };
+
+  handleKeyDown = (event) => {
+    if (event.key === "Enter") this.onClickInput();
   };
 
   onChangeEdit = (event) => {
@@ -123,6 +130,7 @@ class App extends Component {
             userIn={this.state.userInput}
             onChangeInput={this.onChangeInput}
             onClickInput={this.onClickInput}
+            handleKeyDown={this.handleKeyDown}
           />
         </div>
         <div>{this.state.todos.length > 0 ? <h1>TodoList</h1> : null}</div>

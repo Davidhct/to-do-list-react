@@ -1,7 +1,12 @@
 import React from "react";
 import "./TodoInput.styles.css";
 
-export const TodoInput = ({ userIn, onChangeInput, onClickInput }) => (
+export const TodoInput = ({
+  userIn,
+  handleKeyDown,
+  onChangeInput,
+  onClickInput,
+}) => (
   <div className="input-div">
     <input
       type="text"
@@ -9,6 +14,7 @@ export const TodoInput = ({ userIn, onChangeInput, onClickInput }) => (
       onChange={onChangeInput}
       className="input"
       value={userIn}
+      onKeyDown={handleKeyDown}
     />
     <button type="button" onClick={onClickInput} className="input-button">
       +
