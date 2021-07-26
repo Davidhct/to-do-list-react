@@ -19,3 +19,4 @@ The purpose of the project is to learn the React library.<br>
 <kbd><img src="./public/demo images/img_1.png" width="630" height="300"></kbd>
 <kbd><img src="./public/demo images/img_2.png" width="630" height="300"></kbd>
 <kbd><img src="./public/demo images/img_3.png" width="630" height="300"></kbd>
+<kbd><img src="./public/demo images/img_4.png" width="630" height="300"></kbd>
